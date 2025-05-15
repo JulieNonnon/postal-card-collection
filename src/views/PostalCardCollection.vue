@@ -18,6 +18,16 @@
       </select>
     </div>
 
+    <!-- Message si aucune carte trouvée -->
+    <div v-if="filteredCards.length === 0" class="no-results">
+      Aucun résultat trouvé 👀
+    </div>
+
+    <!-- Bouton pour réinitialiser une recherche -->
+    <div class="actions">
+      <button @click="resetFilters">Réinitialiser</button>
+    </div>
+
     <!-- Grille de cartes postales -->
     <div class="postal-card-section">
       <PostalCardPreviewComponent
@@ -55,8 +65,15 @@ export default defineComponent({
       (!selectedLocation.value || card.location === selectedLocation.value) &&
       (!searchStore.searchQuery ||
         card.title.toLowerCase().includes(searchStore.searchQuery.toLowerCase()))
-    )
-  );
+      )
+    );
+
+    // Reinitialisation de la recherche
+    const resetFilters = () => {
+      searchStore.searchQuery = '';
+      searchStore.searchInput = '';
+      selectedLocation.value = '';
+    };
 
     return {
       cards,
@@ -92,5 +109,10 @@ label {
   grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
   gap: 1rem; /* espacement entre les cartes */
   padding: 1rem;
+}
+.no-results {
+  text-align: center;
+  color: #999;
+  margin-top: 2rem;
 }
 </style>
