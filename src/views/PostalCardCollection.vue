@@ -33,13 +33,15 @@
 import { defineComponent, computed, ref } from "vue";
 import { postalCards, PostalCard } from "@/mock/postalcard.mock";
 import PostalCardPreviewComponent from "@/components/PostalCardPreviewComponent.vue";
-import { store } from "@/store";
+//import { store } from "@/store";
+import { useSearchStore } from '@/store/searchStore';
 
 export default defineComponent({
   components: { PostalCardPreviewComponent },
   setup() {
     const cards = ref<PostalCard[]>(postalCards);
     const selectedLocation = ref<string>("");
+    const searchStore = useSearchStore();
 
     // Liste des lieux uniques pour le menu déroulant
     const uniqueLocations = computed(() => {
@@ -48,16 +50,13 @@ export default defineComponent({
     });
 
     // 🔀 Filtrage combiné : lieu + recherche
-    const filteredCards = computed(() => {
-      return cards.value.filter((card) => {
-        const matchesLocation =
-          !selectedLocation.value || card.location === selectedLocation.value;
-        const matchesSearch =
-          !store.searchQuery ||
-          card.title.toLowerCase().includes(store.searchQuery.toLowerCase());
-        return matchesLocation && matchesSearch;
-      });
-    });
+    const filteredCards = computed(() =>
+    cards.value.filter(card =>
+      (!selectedLocation.value || card.location === selectedLocation.value) &&
+      (!searchStore.searchQuery ||
+        card.title.toLowerCase().includes(searchStore.searchQuery.toLowerCase()))
+    )
+  );
 
     return {
       cards,
