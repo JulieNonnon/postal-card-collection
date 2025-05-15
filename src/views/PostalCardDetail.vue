@@ -8,15 +8,20 @@
   <div v-else>
     <p>Carte introuvable 🫤</p>
   </div>
+  <ButtonComponent label="Retour à la collection" to="/collection" />
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 import { useRoute } from "vue-router";
 import { postalCards, PostalCard } from "@/mock/postalcard.mock";
+import ButtonComponent from "@/components/ButtonComponent.vue";
 
 export default defineComponent({
   name: "PostalCardDetail",
+  components: {
+    ButtonComponent,
+  },
   setup() {
     const route = useRoute();
     const id = Number(route.params.id); // assure qu'on a un nombre

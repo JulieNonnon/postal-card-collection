@@ -11,11 +11,23 @@
       Ce blog a pour but d'archiver mes cartes postales préférées reçues lors de
       mes promenades et autres défis !
     </p>
-    <router-link to="/collection">
+    <!-- <router-link to="/collection">
       <button>Découvrir les cartes trouvées à ce jour</button>
-    </router-link>
+    </router-link> -->
+    <ButtonComponent label="Découvrir les cartes trouvées à ce jour" to="/collection" />
   </div>
 </template>
+
+<script lang="ts">
+import ButtonComponent from "@/components/ButtonComponent.vue";
+
+export default {
+  name: "HomePage",
+  components: {
+    ButtonComponent,
+  },
+};
+</script>
 
 <style scoped>
 h1,

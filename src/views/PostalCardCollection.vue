@@ -25,7 +25,7 @@
 
     <!-- Bouton pour réinitialiser une recherche -->
     <div class="actions">
-      <button @click="resetFilters">Réinitialiser</button>
+      <ButtonComponent class="actionButton" label="Réinitialiser" :onClick="resetFilters" />
     </div>
 
     <!-- Grille de cartes postales -->
@@ -36,6 +36,7 @@
         :card="card"
       />
     </div>
+    <ButtonComponent label="Retour à l'accueil" to="/" />
   </div>
 </template>
 
@@ -43,11 +44,12 @@
 import { defineComponent, computed, ref } from "vue";
 import { postalCards, PostalCard } from "@/mock/postalcard.mock";
 import PostalCardPreviewComponent from "@/components/PostalCardPreviewComponent.vue";
+import ButtonComponent from "@/components/ButtonComponent.vue";
 //import { store } from "@/store";
 import { useSearchStore } from '@/store/searchStore';
 
 export default defineComponent({
-  components: { PostalCardPreviewComponent },
+  components: { PostalCardPreviewComponent, ButtonComponent, },
   setup() {
     const cards = ref<PostalCard[]>(postalCards);
     const selectedLocation = ref<string>("");
@@ -80,6 +82,7 @@ export default defineComponent({
       selectedLocation,
       uniqueLocations,
       filteredCards,
+      resetFilters,
     };
   },
 });
@@ -100,12 +103,6 @@ label {
 }
 .postal-card-section {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.postal-card-section {
-  display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 colonnes égales */
   gap: 1rem; /* espacement entre les cartes */
   padding: 1rem;
@@ -114,5 +111,11 @@ label {
   text-align: center;
   color: #999;
   margin-top: 2rem;
+}
+.actionButton {
+  padding: 0;
+  width: 15%;
+  margin: 2% 45%;
+  font-size: smaller;
 }
 </style>
