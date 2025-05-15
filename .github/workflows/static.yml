@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Vue.js app to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -37,15 +37,15 @@ jobs:
           node-version: '20'
       - name: Install dependencies
         run: npm install
-      - name: Build app
-        run: npm run build -- --base-href=/postal-card-collection/ --configuration=production --project=postal-card-collection
+      - name: Build Vue.js app
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload entire repository
-          path: './dist/postal-card-collection'
+          path: 'dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
