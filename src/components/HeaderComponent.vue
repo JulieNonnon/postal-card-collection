@@ -11,10 +11,11 @@
     <form @submit.prevent="handleSearch">
       <input
         type="text"
-        v-model="search"
+        :value="searchInput"
+        @input="onInput"
         placeholder="Rechercher une carte..."
       />
-      <button class="searchButton" type="submit">🔍</button>
+      <button @click="search" class="searchButton" type="submit">🔍</button>
     </form>
   </header>
 </template>
@@ -22,20 +23,30 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
-import { store } from "@/store";
+//import { store } from "@/store";
+import { useSearchStore } from '@/store/searchStore';
 
 export default defineComponent({
   name: "HeaderComponent",
   setup() {
-    const search = ref("");
+    const searchStore = useSearchStore();
     const router = useRouter();
 
-    const handleSearch = () => {
-      store.searchQuery = search.value;
-      router.push("/collection"); // Redirige vers la collection
+    const onInput = (event: Event) => {
+      const target = event.target as HTMLInputElement;
+      searchStore.updateInput(target.value);
     };
 
-    return { search, handleSearch };
+    const search = () => {
+      searchStore.commitSearch();
+      router.push({ name: 'Collection' }); // Navigue vers la page des résultats
+    };
+
+    return {
+      searchInput: searchStore.searchInput,
+      onInput,
+      search,
+    };
   },
 });
 </script>
