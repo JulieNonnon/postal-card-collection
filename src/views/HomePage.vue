@@ -14,7 +14,16 @@
     <!-- <router-link to="/collection">
       <button>Découvrir les cartes trouvées à ce jour</button>
     </router-link> -->
-    <ButtonComponent label="Découvrir les cartes trouvées à ce jour" to="/collection" />
+    <ButtonComponent class="button" label="Découvrir les cartes trouvées à ce jour" to="/collection" />
+    <div class="pikminLineup">
+      <img class="whitepik" src="@/assets/pikmins/stamp-white.png" alt="image d'un pikmin blanc" style="width: 10%; height: 10%;">
+      <img class="purplepik" src="@/assets/pikmins/stamp-purple.png" alt="image d'un pikmin violet" style="width: 9%; height: 9%;">  
+      <img class="redpik" src="@/assets/pikmins/stamp-red.png" alt="image d'un pikmin rouge" style="width: 7%; height: 7%;">
+      <img class="bluepik" src="@/assets/pikmins/stamp-blue.png" alt="image d'un pikmin bleu" style="width: 8%; height: 8%;">
+      <img class="yellowpik" src="@/assets/pikmins/stamp-yellow.png" alt="image d'un pikmin jaune" style="width: 9.5%; height: 9.5%;">
+      <img class="rocpik" src="@/assets/pikmins/stamp-roc.png" alt="image d'un pikmin roc" style="width: 11%; height: 11%;">
+      <img class="wingpik" src="@/assets/pikmins/stamp-pink.png" alt="image d'un pikmin ailé" style="width: 8%; height: 8%;">
+    </div>
   </div>
 </template>
 
@@ -34,21 +43,20 @@ h1,
 h2 {
   text-align: center;
   margin-bottom: 2rem;
+  margin-left: 5%;
+  margin-right: 5%;
   font-family: Calibri;
 }
-button {
-  background-color: mediumseagreen;
-  margin: 5% 35%;
-  width: 30%;
-  border-radius: 20px;
-  border: none;
-  padding: 2%;
-  color: white;
-  font-size: large;
-  transition: transform 0.2s ease;
-  cursor: pointer;
+
+p {
+  margin: 5%;
+  text-align: justify;
 }
-button:hover {
-  transform: scale(1.03);
+
+.pikminLineup {
+  margin: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
 }
 </style>

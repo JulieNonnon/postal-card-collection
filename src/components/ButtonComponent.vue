@@ -38,5 +38,12 @@ button {
 button:hover {
   transform: scale(1.03);
 }
-</style>
 
+
+@media (max-width: 600px) {
+  button {
+    width: 50%;
+    margin: 5% 25%;
+  }
+}
+</style>

@@ -39,9 +39,9 @@ export default defineComponent({
 h1,
 h3 {
   text-align: center;
-  margin-bottom: 2rem;
   font-family: Calibri;
 }
+
 img {
   padding: 0 20%;
   max-width: 60%;
@@ -51,7 +51,7 @@ img {
 
 @media (max-width: 600px) {
   img {
-    padding: 0 5%;
+    padding: 4% 5%;
     max-width: 90%;
     margin: auto;
   }
