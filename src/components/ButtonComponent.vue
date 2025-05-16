@@ -1,15 +1,9 @@
 <template>
-<!-- si une navigation est renseignée via to, alors le bouton utilise <router link> -->
-<!-- si onClick est défini, le bouton effectuera l'action -->
-  <component
-    :is="to ? 'router-link' : 'button'"
-    :to="to"
-    @click="handleClick"
-  >
+  <router-link :to="to">
     <button>
       {{ label }}
     </button>
-  </component>
+  </router-link>
 </template>
 
 <script lang="ts">
@@ -22,19 +16,7 @@ export default {
     },
     to: {
       type: [String, Object],
-      default: null,
-    },
-    onClick: {
-      type: Function,
-      default: null,
-    },
-  },
-  methods: {
-    handleClick(event: Event) {
-      if (this.$props.onClick) {
-        event.preventDefault(); // évite navigation si clic = action
-        this.$props.onClick();
-      }
+      required: true,
     },
   },
 };

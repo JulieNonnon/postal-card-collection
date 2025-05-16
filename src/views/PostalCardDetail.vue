@@ -48,4 +48,12 @@ img {
   height: auto;
   margin: 1rem 0;
 }
+
+@media (max-width: 600px) {
+  img {
+    padding: 0 5%;
+    max-width: 90%;
+    margin: auto;
+  }
+}
 </style>

@@ -25,7 +25,7 @@
 
     <!-- Bouton pour réinitialiser une recherche -->
     <div class="actions">
-      <ButtonComponent class="actionButton" label="Réinitialiser" :onClick="resetFilters" />
+      <button class="actionButton" @click="resetFilters">Réinitialiser</button>
     </div>
 
     <!-- Grille de cartes postales -->
@@ -113,9 +113,20 @@ label {
   margin-top: 2rem;
 }
 .actionButton {
-  padding: 0;
+  background-color: mediumseagreen;
+  color: white;
+  border:  none;
+  border-radius: 20px;
+  padding: 10px 2%;
   width: 15%;
-  margin: 2% 45%;
-  font-size: smaller;
+  margin: 2% 43%;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .postal-card-section {
+    gap: 0.1rem; /* espacement entre les cartes */
+    padding: 0.1rem;
+  }
 }
 </style>
