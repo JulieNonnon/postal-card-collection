@@ -61,14 +61,27 @@ export default defineComponent({
       return [...new Set(locations)];
     });
 
-    // 🔀 Filtrage combiné : lieu + recherche
-    const filteredCards = computed(() =>
-    cards.value.filter(card =>
-      (!selectedLocation.value || card.location === selectedLocation.value) &&
-      (!searchStore.searchQuery ||
-        card.title.toLowerCase().includes(searchStore.searchQuery.toLowerCase()))
+    // 🔀 Filtrage combiné : lieu + recherche (du plus récent id au plus ancien id)
+    // const filteredCards = computed(() =>
+    // cards.value.filter(card =>
+    //   (!selectedLocation.value || card.location === selectedLocation.value) &&
+    //   (!searchStore.searchQuery ||
+    //     card.title.toLowerCase().includes(searchStore.searchQuery.toLowerCase()))
+    //   )
+    // );
+
+    // 🔀 Filtrage combiné: lieu + recherche (du plus récent id au plus ancien id)
+    const filteredCards = computed(() => {
+    return cards.value
+      .filter(
+        (card) =>
+        // Lieu : si rien n'est sélectionné, on garde tout
+          (!selectedLocation.value || card.location === selectedLocation.value) &&
+        // Recherche : si rien n'est saisi, on garde tout
+          (!searchStore.searchQuery || card.title.toLowerCase().includes(searchStore.searchQuery.toLowerCase()))
       )
-    );
+      .sort((a, b) => b.id - a.id); // trie du plus récent id au plus ancien id, les cartes sont comparée deux par deux, la différence de leur id respectif va annoncer quelle carte vient avant l'autre
+  });
 
     // Reinitialisation de la recherche
     const resetFilters = () => {
