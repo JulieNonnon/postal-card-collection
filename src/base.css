@@ -16,6 +16,10 @@ body {
 html, body {
   /* html et body doivent prendre toute la hauteur */
   height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* pour éviter les débordements horizontaux */
 }
 
 #app {

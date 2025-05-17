@@ -66,16 +66,20 @@ export default defineComponent({
 
 <style scoped>
 .header {
+  border: 5px red solid;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: mediumseagreen;
-  padding: 1rem;
-  margin: 0;
+  padding: 1rem 0;
+  /* margin: 0; */
+  width: 100%;
+  /* overflow-x: hidden; */
 }
 nav {
   display: flex;
   gap: 1rem;
+  padding-left: 2%;
 }
 .nav-link {
   margin-right: 1rem;
