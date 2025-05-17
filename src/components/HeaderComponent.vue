@@ -1,11 +1,12 @@
 <template>
   <header class="header">
-    <nav>
+    
+    <!-- Bouton Burger -->
+    <button class="burger" @click="toggleMenu"> ☰ </button>
+    <nav :class="{ open: isMenuOpen }">
       <!-- menu -->
-      <router-link to="/" class="nav-link">🌺Accueil</router-link>
-      <router-link to="/collection" class="nav-link"
-        >🌺Cartes Postales</router-link
-      >
+      <router-link to="/" class="nav-link" @click="closeMenu">🌺Accueil</router-link>
+      <router-link to="/collection" class="nav-link" @click="closeMenu">🌺Cartes Postales</router-link>
     </nav>
     <!-- barre de recherche -->
     <form @submit.prevent="handleSearch">
@@ -29,6 +30,7 @@ import { useSearchStore } from '@/store/searchStore';
 export default defineComponent({
   name: "HeaderComponent",
   setup() {
+    const isMenuOpen = ref(false)
     const searchStore = useSearchStore();
     const router = useRouter();
 
@@ -42,8 +44,19 @@ export default defineComponent({
       router.push({ name: 'Collection' }); // Navigue vers la page des résultats
     };
 
+    function toggleMenu() {
+      isMenuOpen.value = !isMenuOpen.value
+    }
+
+    function closeMenu() {
+      isMenuOpen.value = false
+    }
+
     return {
       searchInput: searchStore.searchInput,
+      isMenuOpen,
+      toggleMenu,
+      closeMenu,
       onInput,
       search,
     };
@@ -60,6 +73,10 @@ export default defineComponent({
   padding: 1rem;
   margin: 0;
 }
+nav {
+  display: flex;
+  gap: 1rem;
+}
 .nav-link {
   margin-right: 1rem;
   text-decoration: none;
@@ -69,9 +86,19 @@ export default defineComponent({
 .nav-link.router-link-exact-active {
   font-weight: bold;
 }
+/* Burger button */
+.burger {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+/* Search */
 input {
   padding: 0.5rem;
   border: 1px solid #ccc;
+  width: 60%;
 }
 button {
   background-color: mediumseagreen;
@@ -80,5 +107,28 @@ button {
   margin-left: 0.5rem;
   padding: 0.5rem;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .burger {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: mediumseagreen;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  nav.open {
+    display: flex;
+  }
 }
 </style>

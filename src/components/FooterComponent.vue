@@ -2,15 +2,13 @@
   <footer class="footer">
     <nav>
       <router-link to="/" class="nav-link">Accueil</router-link>
-      <router-link to="/collection" class="nav-link"
-        >Cartes Postales</router-link
-      >
-      <p>Made with 🌺🌼🌷🌻🌹🪻🌸🏵️ by Julie</p>
-      <p>
-        © 2021 Niantic, Inc., Pikmin and Mii Characters / Artwork / Music © 2021
-        Nintendo All Rights Reserved.
-      </p>
+      <router-link to="/collection" class="nav-link">Cartes Postales</router-link>
     </nav>
+    <p>Made with 🌺🌼🌷🌻🌹🪻🌸🏵️ by Julie</p>
+    <p>
+      © 2021 Niantic, Inc., Pikmin and Mii Characters / Artwork / Music © 2021
+      Nintendo All Rights Reserved.
+    </p>
   </footer>
 </template>
 
@@ -39,5 +37,14 @@ p {
 p {
   text-align: center;
   font-size: small;
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 3%;
+  }
+  p {
+    padding: 1%;
+  }
 }
 </style>

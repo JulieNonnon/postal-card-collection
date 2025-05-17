@@ -45,4 +45,10 @@ img {
   height: auto;
   display: block;
 }
+
+@media (max-width: 600px) {
+  .postal-card-preview {
+    padding: 0.6rem;
+  }
+}
 </style>

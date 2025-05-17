@@ -125,8 +125,12 @@ label {
 
 @media (max-width: 600px) {
   .postal-card-section {
-    gap: 0.1rem; /* espacement entre les cartes */
-    padding: 0.1rem;
+    gap: 0; /* espacement entre les cartes */
+    padding: 0;
+  }
+  .actionButton {
+    width: 20%;
+    margin: 2% 41%;
   }
 }
 </style>

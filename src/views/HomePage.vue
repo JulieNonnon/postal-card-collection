@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Archives de cartes postales Pikmin Bloom 📬</h1>
+    <h1>Collection de cartes postales Pikmin Bloom 📬</h1>
     <p>
       Pikmin Bloom est une application de marche à pied ludique inspirée de la
       licence Pikmin de Nintendo, rythmée par des évenements mensuels proposant
@@ -58,5 +58,11 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: end;
+}
+
+@media (max-width: 600px) {
+  .pikminLineup {
+    justify-content: center;
+  }
 }
 </style>
