@@ -66,7 +66,7 @@ export default defineComponent({
 
 <style scoped>
 .header {
-  border: 5px red solid;
+  /* border: 5px red solid; */
   display: flex;
   justify-content: space-between;
   align-items: center;
