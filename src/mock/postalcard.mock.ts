@@ -7,13 +7,7 @@ export interface PostalCard {
 }
 
 export const postalCards: PostalCard[] = [
-  // {
-  //   id: 100,
-  //   image: require("@/assets/postcards/2025-04-02-lemans-horloge.png"),
-  //   title: "Peinture Murale - Horloge Romaine",
-  //   date: "2025-04-02",
-  //   location: "Le Mans, France",
-  // },
+
   // {
   //   id: 200,
   //   image: require("@/assets/postcards/2025-04-03-lemans-manger.png"),
@@ -637,11 +631,53 @@ export const postalCards: PostalCard[] = [
     date: "2025-03-28",
     location: "Cergy, France",
   },
-  // {
-  //   id: 88,
-  //   image: require("@/assets/postcards/2025-03-24-maisonslaffitte-marlenedietritch.png"),
-  //   title: "Portrait de Marlène Dietrich",
-  //   date: "2025-03-24",
-  //   location: "Maisons-Laffitte, France",
-  // },
+  {
+    id: 88,
+    image: require("@/assets/postcards/2025-03-28-cergy-bonjour.png"),
+    title: "Bonjour du Bontemps",
+    date: "2025-03-28",
+    location: "Cergy, France",
+  },
+  {
+    id: 89,
+    image: require("@/assets/postcards/2025-03-30-cergy-clapmural.png"),
+    title: "Peinture murale - Clap",
+    date: "2025-03-30",
+    location: "Paris, France",
+  },
+  {
+    id: 90,
+    image: require("@/assets/postcards/2025-03-31-courdimanche-tagmirapolis.png"),
+    title: "Tag Mirapolis",
+    date: "2025-03-31",
+    location: "Courdimanche, France",
+  },
+  {
+    id: 91,
+    image: require("@/assets/postcards/2025-04-01-courdimanche-mirapolis.png"),
+    title: "Parc d'attractions Mirapolis abandonné",
+    date: "2025-04-01",
+    location: "Courdimanche, France",
+  },
+  {
+    id: 92,
+    image: require("@/assets/postcards/2025-04-02-paris-girouette.png"),
+    title: "Girouette du Diable",
+    date: "2025-04-02",
+    location: "Paris, France",
+  },
+  {
+    id: 93,
+    image: require("@/assets/postcards/2025-04-02-paris-jungle.png"),
+    title: "La jungle",
+    date: "2025-04-02",
+    location: "Paris, France",
+  },
+  {
+    id: 94,
+    image: require("@/assets/postcards/2025-04-02-lemans-horloge.png"),
+    title: "Peinture Murale - Horloge Romaine",
+    date: "2025-04-02",
+    location: "Le Mans, France",
+  },
 ];
