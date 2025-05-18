@@ -51,6 +51,7 @@ h2 {
 p {
   margin: 5%;
   text-align: justify;
+  font-family: Calibri;
 }
 
 .pikminLineup {
