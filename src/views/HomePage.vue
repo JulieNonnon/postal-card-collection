@@ -11,9 +11,18 @@
       Ce blog a pour but d'archiver mes cartes postales préférées reçues lors de
       mes promenades et autres défis !
     </p>
+
+    <h2>Dernière carte postale ajoutée :</h2>
+    <div class="latestCard">
+      <PostalCardPreviewComponent :card="latestCard" />
+    </div>
+
     <!-- <router-link to="/collection">
       <button>Découvrir les cartes trouvées à ce jour</button>
     </router-link> -->
+
+
+
     <ButtonComponent class="button" label="Découvrir les cartes trouvées à ce jour" to="/collection" />
     <div class="pikminLineup">
       <img class="whitepik" src="@/assets/pikmins/stamp-white.png" alt="image d'un pikmin blanc" style="width: 10%; height: 10%;">
@@ -28,14 +37,27 @@
 </template>
 
 <script lang="ts">
+import { defineComponent, computed } from "vue";
+import { postalCards } from "@/mock/postalcard.mock";
+import PostalCardPreviewComponent from "@/components/PostalCardPreviewComponent.vue";
 import ButtonComponent from "@/components/ButtonComponent.vue";
 
-export default {
+export default defineComponent ({
   name: "HomePage",
   components: {
     ButtonComponent,
+    PostalCardPreviewComponent,
   },
-};
+  setup() {
+    const latestCard = computed(() => {
+      return postalCards.reduce((latest, card) =>
+        card.id > latest.id ? card : latest
+      );
+    });
+
+    return { latestCard };
+  },
+});
 </script>
 
 <style scoped>
@@ -52,6 +74,19 @@ p {
   margin: 5%;
   text-align: justify;
   font-family: Calibri;
+}
+
+.latestCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.latestCard :deep(.postal-card-preview) { 
+  /* Le sélecteur :deep() permet de cibler des éléments à l'intérieur du composant enfant (utile avec scoped). */
+  transform: scale(1); /* réduit la taille du composant */
+  max-width: 60%;
+  padding: 0;
 }
 
 .pikminLineup {
